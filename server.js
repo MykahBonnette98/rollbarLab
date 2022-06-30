@@ -39,8 +39,10 @@ app.post('/api/students', (req, res) => {
    try {
        if (index === -1 && name !== '') {
            students.push(name)
+           rollbar.info('Add a name')
            res.status(200).send(students)
        } else if (name === ''){
+        rollbar.error('Error input')
            res.status(400).send('You must enter a name.')
        } else {
            res.status(400).send('That student already exists.')
@@ -54,6 +56,7 @@ app.delete('/api/students/:index', (req, res) => {
     const targetIndex = +req.params.index
     
     students.splice(targetIndex, 1)
+    rollbar.info('Was deleted')
     res.status(200).send(students)
 })
 
