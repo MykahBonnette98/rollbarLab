@@ -13,3 +13,7 @@ var rollbar = new Rollbar({
 });
 
 rollbar.log("Hello world!");
+rollbar.info('Requested info');
+rollbar.error('Error');
+rollbar.critical('Critial');
+rollbar.warning('Warning');
